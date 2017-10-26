@@ -30,13 +30,13 @@ describe("Thermostat", function() {
   })
 
   it('max temperature is 25 degrees if power saving is true', function() {
-    thermo.powerSavingMode = true
+    thermo.switchPowerSavingOn()
     thermo.up(20)
     expect(thermo.currentTemperature()).toEqual(25)
   })
 
-  it('max temperature is 32 degrees if power saving is true', function() {
-    thermo.powerSavingMode = false
+  it('max temperature is 32 degrees if power saving is false', function() {
+    thermo.switchPowerSavingOff()
     thermo.up(20)
     expect(thermo.currentTemperature()).toEqual(32)
   })
@@ -46,17 +46,17 @@ describe("Thermostat", function() {
     expect(thermo.currentTemperature()).toEqual(20)
   })
 
-  it('energy usage is low if below 18', function() {
+  it('energy usage is low if below 18 degrees', function() {
     thermo.down(3)
     expect(thermo.currentUsage()).toEqual('low-usage')
   })
 
-  it('energy usage is low if below 25', function() {
+  it('energy usage is low if below 25 degrees', function() {
     expect(thermo.currentUsage()).toEqual('medium-usage')
   })
 
-  it('energy usage is low if above 25', function() {
-    thermo.powerSavingMode = false
+  it('energy usage is high if 25 degrees or above', function() {
+    thermo.switchPowerSavingOff()
     thermo.up(10)
     expect(thermo.currentUsage()).toEqual('high-usage')
   })
