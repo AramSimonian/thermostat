@@ -1,28 +1,32 @@
 function Thermostat() {
-  this.temperature = 20
+  this._temperature = 20
   this.powerSavingMode = true
   this.up = function(amount) {
-    this.temperature+=amount
+    this._temperature+=amount
     if (this.powerSavingMode)
-      this.temperature = Math.min(this.temperature, 25)
+      this._temperature = Math.min(this._temperature, 25)
     else
-      this.temperature = Math.min(this.temperature, 32)
+      this._temperature = Math.min(this._temperature, 32)
   }
   this.down = function(amount) {
-    this.temperature-=amount
-    this.temperature=Math.max(this.temperature, 10)
+    this._temperature-=amount
+    this._temperature=Math.max(this._temperature, 10)
   }
   this.reset = function() {
-    this.temperature = 20
+    this._temperature = 20
   }
   this.currentUsage = function() {
-    if (this.temperature < 18)
+    if (this._temperature < 18)
       return 'low-usage'
-    else if (this.temperature < 25)
+    else if (this._temperature < 25)
       return 'medium-usage'
     else
       return 'high-usage'
   }
+}
+
+Thermostat.prototype.currentTemperature  = function(){
+  return this._temperature;
 }
 
 // Thermostat.prototype.up = function() {
