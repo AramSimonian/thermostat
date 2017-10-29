@@ -10,8 +10,9 @@
   <div id="current_temp">Current temperature: <label id="current_temp_value"></label><sup>o</sup>C</div>
   <div id="energy_usage">Energy usage:<label id="energy_usage_value"></label>
   <div id="power_saving_mode"></div>
-  PSM:<input type="radio" name="psm" id="psm_on" class="psm_control" value="on" checked="true" selected="true">On</label>
-  <input type="radio" name="psm" id="psm_off" class="psm_control" value="off">Off</label>
+    Power saving mode is <span id="power-saving-status">on</span>
+    <button id="psm_on" class="psm_control">PSM on</button>
+    <button id="psm_off" class="psm_control">PSM off</button>
   </div>
   <div id="thermostat_controls">
     <input type="button" name="temp_up" id="temp_up" class="thermo_button" value="Up">
