@@ -1,16 +1,19 @@
 'use strict';
 
 function Thermostat() {
+  this.DEFAULT_TEMPERATURE = 20;
   this.MINIMUM_TEMPERATURE = 10;
-  this.temperature = 20;
+  this.MAXIMUM_TEMPERATURE_PSM_ON = 25;
+  this.MAXIMUM_TEMPERATURE_PSM_OFF = 32;
+  this.temperature = this.DEFAULT_TEMPERATURE;
   this.powerSavingMode = true;
   this.up = function(amount) {
     this.temperature+=amount
     if(this.isPowerSavingOn()){
-      this.temperature = Math.min(this.currentTemperature(), 25)
+      this.temperature = Math.min(this.currentTemperature(), this.MAXIMUM_TEMPERATURE_PSM_ON)
     }
     else{
-      this.temperature = Math.min(this.currentTemperature(), 32)
+      this.temperature = Math.min(this.currentTemperature(), this.MAXIMUM_TEMPERATURE_PSM_OFF)
     }
   }
   this.down = function(amount) {
@@ -18,12 +21,12 @@ function Thermostat() {
     this.temperature=Math.max(this.currentTemperature(), this.MINIMUM_TEMPERATURE)
   }
   this.reset = function() {
-    this.temperature = 20
+    this.temperature = this.DEFAULT_TEMPERATURE
   }
   this.currentUsage = function() {
     if (this.temperature < 18)
       return 'low-usage'
-    else if (this.temperature < 25)
+    else if (this.temperature < this.MAXIMUM_TEMPERATURE_PSM_ON)
       return 'medium-usage'
     else
       return 'high-usage'
