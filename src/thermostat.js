@@ -6,8 +6,10 @@ function Thermostat() {
   this.MEDIUM_ENERGY_USAGE_TEMP = 18;
   this.MAXIMUM_TEMPERATURE_PSM_ON = 25;
   this.MAXIMUM_TEMPERATURE_PSM_OFF = 32;
+
   this.temperature = this.DEFAULT_TEMPERATURE;
   this.powerSavingMode = true;
+
   this.up = function(amount) {
     this.temperature+=amount
     if(this.isPowerSavingOn()){
@@ -17,13 +19,16 @@ function Thermostat() {
       this.temperature = Math.min(this.currentTemperature(), this.MAXIMUM_TEMPERATURE_PSM_OFF)
     }
   }
+
   this.down = function(amount) {
     this.temperature-=amount
     this.temperature=Math.max(this.currentTemperature(), this.MINIMUM_TEMPERATURE)
   }
+
   this.reset = function() {
     this.temperature = this.DEFAULT_TEMPERATURE
   }
+  
   this.currentUsage = function() {
     if (this.temperature < this.MEDIUM_ENERGY_USAGE_TEMP)
       return 'low-usage'
