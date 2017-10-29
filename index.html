@@ -5,5 +5,18 @@
     <title>Thermostat</title>
     <script src="src/thermostat.js"></script>
   </head>
-  <body></body>
+  <body>
+  <h1>ACME thermostat controller</h1>
+  <div>Current temperature: <label id="current_temp"></label><sup>o</sup>C</div>
+  <div id="power_saving_mode"></div>
+  PSM:<input type="radio" name="psm" id="psm_on" class="psm_control" value="on" checked="true" selected="true">On</label>
+  <input type="radio" name="psm" id="psm_off" class="psm_control" value="off">Off</label>
+  </div>
+  <div id="thermostat_controls">
+    <input type="button" name="temp_up" id="temp_up" class="thermo_button" value="Up">
+    <input type="button" name="temp_reset" id="temp_reset" class="thermo_button" value="Reset">
+    <input type="button" name="temp_down" id="temp_down" class="thermo_button" value="Down">
+  </div>
+
+  </body>
 </html>
