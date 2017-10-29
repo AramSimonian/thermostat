@@ -3,6 +3,7 @@
 function Thermostat() {
   this.DEFAULT_TEMPERATURE = 20;
   this.MINIMUM_TEMPERATURE = 10;
+  this.MEDIUM_ENERGY_USAGE_TEMP = 18;
   this.MAXIMUM_TEMPERATURE_PSM_ON = 25;
   this.MAXIMUM_TEMPERATURE_PSM_OFF = 32;
   this.temperature = this.DEFAULT_TEMPERATURE;
@@ -24,7 +25,7 @@ function Thermostat() {
     this.temperature = this.DEFAULT_TEMPERATURE
   }
   this.currentUsage = function() {
-    if (this.temperature < 18)
+    if (this.temperature < this.MEDIUM_ENERGY_USAGE_TEMP)
       return 'low-usage'
     else if (this.temperature < this.MAXIMUM_TEMPERATURE_PSM_ON)
       return 'medium-usage'
