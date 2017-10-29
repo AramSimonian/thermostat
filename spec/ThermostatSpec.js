@@ -29,6 +29,20 @@ describe("Thermostat", function() {
     expect(thermo.currentTemperature()).toEqual(10)
   })
 
+  it('has power saving on by default', function() {
+    expect(thermo.isPowerSavingOn()).toEqual(true)
+  })
+
+  it('can switch power saving off', function() {
+    thermo.switchPowerSavingOff()
+    expect(thermo.isPowerSavingOn()).toEqual(false)
+  })
+
+  it('can switch power saving on', function() {
+    thermo.switchPowerSavingOn()
+    expect(thermo.isPowerSavingOn()).toEqual(true)
+  })
+
   it('max temperature is 25 degrees if power saving is true', function() {
     thermo.switchPowerSavingOn()
     thermo.up(20)
